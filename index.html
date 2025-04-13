@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>俄罗斯方块</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        .game-container {
+            display: flex;
+            gap: 20px;
+        }
+        .game-board {
+            border: 2px solid #333;
+            background-color: #111;
+        }
+        .side-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .next-piece {
+            width: 120px;
+            height: 120px;
+            border: 2px solid #333;
+            background-color: #111;
+        }
+        .game-info {
+            padding: 10px;
+            border: 2px solid #333;
+            background-color: #f8f8f8;
+            width: 120px;
+        }
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+        button {
+            padding: 8px 16px;
+            margin: 0 5px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .game-over {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>俄罗斯方块</h1>
+    
+    <div class="game-container">
+        <canvas id="gameBoard" class="game-board" width="300" height="600"></canvas>
+        
+        <div class="side-panel">
+            <div>
+                <h3>下一个方块</h3>
+                <canvas id="nextPiece" class="next-piece" width="120" height="120"></canvas>
+            </div>
+            
+            <div class="game-info">
+                <p>分数: <span id="score">0</span></p>
+                <p>等级: <span id="level">1</span></p>
+                <p>已消行: <span id="lines">0</span></p>
+            </div>
+            
+            <div class="controls">
+                <button id="startBtn">开始</button>
+                <button id="pauseBtn">暂停</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="game-over" id="gameOver">
+        <h2>游戏结束!</h2>
+        <p>你的分数: <span id="finalScore">0</span></p>
+        <button id="restartBtn">重新开始</button>
+    </div>
+
+    <div class="controls">
+        <p>操作说明: 方向键 ← → 移动, ↑ 旋转, ↓ 加速下落, 空格键直接下落</p>
+    </div>
+    
+    <script src="js/tetris.js"></script>
+</body>
+</html>
